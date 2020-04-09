@@ -6,17 +6,16 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class ProductRepository implements IRepository<Product>{
-
+public abstract class ProductRepository implements IRepository<Product>{
 
     @Override
     public List<Product> getAll() {
-        return null;
+        return this.getAll();
     }
 
     @Override
     public Product getById(long _id) {
-        return null;
+        return this.findById(_id).get();
     }
 
     @Override
@@ -25,17 +24,18 @@ public class ProductRepository implements IRepository<Product>{
     }
 
     @Override
-    public Product delete(long _id) {
-        return null;
+    public void delete(long _id) {
+        this.deleteById(_id);
     }
 
     @Override
     public Product update(Product _entity) {
-        return null;
+        return this.update(_entity);
     }
 
     @Override
     public Product add(Product _entity) {
-        return null;
+        return this.save(_entity);
     }
+
 }
